@@ -1,0 +1,17 @@
+# Resumen de tareas:
+
+# - Configurar la base de datos de MongoDB.
+# - Crear un mockup para la interfaz de la tabla de registros.
+# - El mockup debe tener vistas movil, tablet y desktop y debe tener vistas de edicion, eliminar y agregar datos a la tabla.
+# - Desarrollar la interfaz usando React.
+# - Asegurarse de que la interfaz tenga la capacidad de añadir nuevos registros y editar/eliminar registros existentes.
+# - Renderizar una lista de películas a partir de la tabla "Movie" con sus respectivos datos (id, título, año, tiempo, lenguaje, fecha de lanzamiento,   país).
+# - Asegurarse de que el desarrollo esté en inglés, excepto para los strings que ven los usuarios, que pueden estar en español.
+# - Proporcionar documentación técnica adecuada.
+# - Asegurarse de que la interfaz sea responsive.
+# - Conectar el servidor con Express para permitir el acceso a los datos desde la web.
+# - Asegurarse de que la base de datos cumpla con las 3 primeras formas normales y cuente con un diagrama de entidad-relación.
+# - Evitar redundancias de datos.
+# - Transformar el formato de fecha a dd/mm/aaaa.
+
+# Extra: Realizar un buscador de datos en la tabla
