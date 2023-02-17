@@ -13,13 +13,15 @@ import {
   ModalFooter,
 } from "reactstrap";
 
+
+
 const data = [
-  { id: 1, pelicula: "Test 1", director: "Test 1"},
-  { id: 2, pelicula: "Test 2", director: "Test 2" },
-  { id: 3, pelicula: "Test 3", director: "Test 3" },
-  { id: 4, pelicula: "Test 4", director: "Test 4" },
-  { id: 5, pelicula: "Test 5", director: "Test 5"},
-  { id: 6, pelicula: "Test 6", director: "Test 6" },
+  { id: 1, pelicula: "Test 1", year: "Test 1", director: "Test 1", genre: "Test 1", language: "Test 1"},
+  { id: 2, pelicula: "Test 2", year: "Test 2", director: "Test 2", genre: "Test 2", language: "Test 2"},
+  { id: 3, pelicula: "Test 3", year: "Test 3", director: "Test 3", genre: "Test 3", language: "Test 3"},
+  { id: 4, pelicula: "Test 4", year: "Test 4", director: "Test 4", genre: "Test 4", language: "Test 4" },
+  { id: 5, pelicula: "Test 5", year: "Test 5", director: "Test 5", genre: "Test 5", language: "Test 5"},
+  { id: 6, pelicula: "Test 6", year: "Test 6", director: "Test 6", genre: "Test 6", language: "Test 6"},
 ];
 
 class App extends React.Component {
@@ -30,7 +32,10 @@ class App extends React.Component {
     form: {
       id: "",
       pelicula: "",
+      year: "",
       director: "",
+      genre: "",
+      language: "",
     },
   };
 
@@ -61,7 +66,10 @@ class App extends React.Component {
     arreglo.map((registro) => {
       if (dato.id == registro.id) {
         arreglo[contador].pelicula = dato.pelicula;
+        arreglo[contador].year = dato.year;
         arreglo[contador].director = dato.director;
+        arreglo[contador].genre = dato.genre;
+        arreglo[contador].language = dato.language;
       }
       contador++;
     });
@@ -69,7 +77,7 @@ class App extends React.Component {
   };
 
   eliminar = (dato) => {
-    var opcion = window.confirm("Estás Seguro que deseas Eliminar el elemento "+dato.id);
+    var opcion = window.confirm("Are you sure do you want to delete? "+ dato.id);
     if (opcion == true) {
       var contador = 0;
       var arreglo = this.state.data;
@@ -106,16 +114,19 @@ class App extends React.Component {
       <>
         <Container>
         <br />
-          <Button color="success" onClick={()=>this.mostrarModalInsertar()}>Crear</Button>
+          <Button color="success" onClick={()=>this.mostrarModalInsertar()}>New Movie</Button>
           <br />
           <br />
           <Table>
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Pelicula</th>
+                <th>Movie</th>
+                <th>Year</th>
                 <th>Director</th>
-                <th>Acción</th>
+                <th>Genres</th>
+                <th>Language</th>
+                <th>Action</th>
               </tr>
             </thead>
 
@@ -124,15 +135,18 @@ class App extends React.Component {
                 <tr key={dato.id}>
                   <td>{dato.id}</td>
                   <td>{dato.pelicula}</td>
+                  <td>{dato.year}</td>
                   <td>{dato.director}</td>
+                  <td>{dato.genre}</td>
+                  <td>{dato.language}</td>
                   <td>
                     <Button
                       color="primary"
                       onClick={() => this.mostrarModalActualizar(dato)}
                     >
-                      Editar
+                      Edit
                     </Button>{" "}
-                    <Button color="danger" onClick={()=> this.eliminar(dato)}>Eliminar</Button>
+                    <Button color="danger" onClick={()=> this.eliminar(dato)}>Delete</Button>
                   </td>
                 </tr>
               ))}
@@ -161,14 +175,14 @@ class App extends React.Component {
             
             <FormGroup>
               <label>
-                Pelicula: 
+                Year: 
               </label>
               <input
                 className="form-control"
-                name="pelicula"
+                name="year"
                 type="text"
                 onChange={this.handleChange}
-                value={this.state.form.pelicula}
+                value={this.state.form.year}
               />
             </FormGroup>
             
@@ -178,10 +192,36 @@ class App extends React.Component {
               </label>
               <input
                 className="form-control"
-                name="anime"
+                name="director"
                 type="text"
                 onChange={this.handleChange}
                 value={this.state.form.director}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <label>
+                Genre: 
+              </label>
+              <input
+                className="form-control"
+                name="genre"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.form.genre}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <label>
+                Language: 
+              </label>
+              <input
+                className="form-control"
+                name="language"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.form.language}
               />
             </FormGroup>
           </ModalBody>
@@ -206,7 +246,7 @@ class App extends React.Component {
 
         <Modal isOpen={this.state.modalInsertar}>
           <ModalHeader>
-           <div><h3>Insertar Pelicula</h3></div>
+           <div><h3>Insert Movie</h3></div>
           </ModalHeader>
 
           <ModalBody>
@@ -225,11 +265,11 @@ class App extends React.Component {
             
             <FormGroup>
               <label>
-                Pelicula: 
+                Year: 
               </label>
               <input
                 className="form-control"
-                name="pelicula"
+                name="year"
                 type="text"
                 onChange={this.handleChange}
               />
@@ -246,6 +286,32 @@ class App extends React.Component {
                 onChange={this.handleChange}
               />
             </FormGroup>
+
+            <FormGroup>
+              <label>
+                Genre: 
+              </label>
+              <input
+                className="form-control"
+                name="genre"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <label>
+                Language: 
+              </label>
+              <input
+                className="form-control"
+                name="language"
+                type="text"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+
+        
           </ModalBody>
 
           <ModalFooter>
@@ -253,13 +319,13 @@ class App extends React.Component {
               color="primary"
               onClick={() => this.insertar()}
             >
-              Insertar
+              Insert
             </Button>
             <Button
               className="btn btn-danger"
               onClick={() => this.cerrarModalInsertar()}
             >
-              Cancelar
+              Cancel
             </Button>
           </ModalFooter>
         </Modal>
@@ -268,3 +334,5 @@ class App extends React.Component {
   }
 }
 export default App;
+
+    
