@@ -335,4 +335,4 @@ class App extends React.Component {
 }
 export default App;
 
-prueba CustomElementRegistry
+
