@@ -22,5 +22,4 @@ Fonts
 Functions
 • API REST • Edit • Add • Delete
 
-Developers
-• Valentina Puentes • Selene Ocanto • Renny Belandria
+
